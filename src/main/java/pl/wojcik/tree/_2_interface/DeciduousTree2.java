@@ -1,4 +1,4 @@
-package pl.wojcik.tree._1_abstract_class;
+package pl.wojcik.tree._2_interface;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -6,10 +6,9 @@ import pl.wojcik.tree._3_Utils.TreeType;
 
 import java.util.UUID;
 
-// drzewo lisciaste
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class DeciduousTree extends TreeAbstraction {
+@EqualsAndHashCode
+public class DeciduousTree2 implements Tree {
 
     private final TreeType treeType;
     private final String name;
@@ -19,26 +18,34 @@ public class DeciduousTree extends TreeAbstraction {
     private long branches;
     private long leavesNumber;
 
-    public DeciduousTree() {
+    public DeciduousTree2() {
         this.treeType = TreeType.DECIDUOUS;
         this.name = treeType + UUID.randomUUID().toString();
-        this.trunkDiameter = 5;
-        this.high = 100;
-        this.width = 20;
+        this.trunkDiameter = 1;
+        this.high = 30;
+        this.width = 8;
+        this.branches = 3;
+        this.leavesNumber = 12;
     }
 
     @Override
     public void grow() {
-        this.trunkDiameter = trunkDiameter + 5;
-        this.high += 15;
-        this.width += 15;
-        this.branches += 15;
-        this.leavesNumber += 15;
+        this.trunkDiameter += 6;
+        this.high += 14;
+        this.width += 14;
+        this.branches += 4;
+        this.leavesNumber += 160;
     }
 
     @Override
     public boolean shedLeavesForTheWinter() {
         return true;
+    }
+
+    @Override
+    public void waveInTheWind() {
+        System.out.println(treeType + " " + this.name + " tree leaves are waving in the wind ... Size of the tree:"
+                + "[" + this.getHigh() + "/" + this.getWidth() + "]");
     }
 
     public void dropAllLeavesBeforeWinter() {
