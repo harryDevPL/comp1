@@ -21,9 +21,6 @@ public class Main2 {
 
         // WINTER IS COMING ...
         deciduousTree.dropAllLeavesBeforeWinter();
-
-        for (Tree listOfTree : listOfTrees) {
-            listOfTree.waveInTheWind();
-        }
+        listOfTrees.forEach(Tree::waveInTheWind);
     }
 }

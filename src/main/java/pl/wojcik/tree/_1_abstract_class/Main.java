@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import pl.wojcik.tree._3_Utils.TreeType;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -24,6 +25,9 @@ public class Main {
             growFewTimes(coniferousTree);
         }
 
+        listOfTrees.sort(Comparator.comparing(TreeAbstraction::getTreeType)
+                .thenComparing(TreeAbstraction::getHigh)
+                .thenComparing(TreeAbstraction::getTrunkDiameter));
         listOfTrees.forEach(e -> logger.info(e.toString()));
 
         long coniferousTreeNumber = listOfTrees.stream()
